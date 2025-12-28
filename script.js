@@ -1,16 +1,19 @@
 // Espera a cena carregar
 window.onload = () => {
-    const personagem = document.querySelector('#meu-personagem');
-    
-    personagem.addEventListener('click', () => {
-        alert("Você me encontrou! Bem-vindo à praça.");
+    const dragao = document.querySelector('#meu-dragao');
+    const som = document.querySelector('#som-dragao');
+
+    dragao.addEventListener('click', () => {
+        // Toca o som manualmente via JavaScript
+        som.play().catch(e => console.log("Erro ao tocar áudio:", e));
         
-        // Exemplo: Faz o personagem girar ao ser clicado
-        personagem.setAttribute('animation', {
-            property: 'rotation',
-            to: '0 360 0',
-            dur: 1000,
-            easing: 'linear'
+        // Pequena animação de "rugido" (escala)
+        dragao.setAttribute('animation__roar', {
+            property: 'scale',
+            to: '0.55 0.55 0.55',
+            dur: 100,
+            dir: 'alternate',
+            loop: 2
         });
     });
 };
